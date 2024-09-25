@@ -3,7 +3,7 @@ package cnx.example.pokemonapp.home.api
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class ResponseBody(
+data class PokemonList(
     @Expose @SerializedName("results") val results: List<PokemonUrl>
 )
 

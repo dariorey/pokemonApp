@@ -1,15 +1,16 @@
 package cnx.example.pokemonapp.home.list
 
+import cnx.example.pokemonapp.home.api.PokemonList
 import cnx.example.pokemonapp.home.api.PokemonUrl
 
 interface ListContract {
     interface View{
-        fun showList()
+        fun showList(pokemonList: List<PokemonUrl>)
         fun showLoader()
         fun hideLoader()
+        fun showError(message:String)
     }
     interface Presenter{
-        fun logOut()
         fun fetchItems()
     }
 
