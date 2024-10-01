@@ -1,4 +1,4 @@
-package cnx.example.pokemonapp.home.api
+package cnx.example.pokemonapp.api
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

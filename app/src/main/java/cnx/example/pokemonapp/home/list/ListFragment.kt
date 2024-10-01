@@ -5,17 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cnx.example.pokemonapp.R
-import cnx.example.pokemonapp.home.api.PokemonUrl
+import cnx.example.pokemonapp.api.PokemonUrl
+import cnx.example.pokemonapp.home.details.DetailsFragment
+import cnx.example.pokemonapp.home.details.ID_KEY
 
 const val USERNAME_BUNDLE = "USERNAME"
 
-class ListFragment : Fragment(), ListContract.View {
+class ListFragment : Fragment(), ListContract.View, ListListener{
     private var username: String? = null
     private lateinit var presenter: ListPresenter
     private lateinit var recycler: RecyclerView
@@ -48,11 +51,12 @@ class ListFragment : Fragment(), ListContract.View {
         recycler = view.findViewById(R.id.recyclerview_pokemon)
         recycler.layoutManager = LinearLayoutManager(context)
 
-        adapter = PokeListAdapter(emptyList())
+        adapter = PokeListAdapter(emptyList(), this)
         recycler.adapter = adapter
 
         presenter = ListPresenter(this)
         presenter.fetchItems()
+
 
     }
 
@@ -71,7 +75,11 @@ class ListFragment : Fragment(), ListContract.View {
     }
 
     override fun showError(message: String) {
-        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onTapListener(item: PokemonUrl) {
+        Toast.makeText(context,"anda",Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -1,7 +1,7 @@
 package cnx.example.pokemonapp.home.list
 
-import cnx.example.pokemonapp.home.api.PokemonList
-import cnx.example.pokemonapp.home.api.PokemonUrl
+import cnx.example.pokemonapp.api.PokemonList
+import cnx.example.pokemonapp.api.PokemonUrl
 
 interface ListContract {
     interface View{

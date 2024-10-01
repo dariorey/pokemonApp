@@ -1,11 +1,8 @@
 package cnx.example.pokemonapp.home.list
 
-import android.content.Intent
 import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
-import cnx.example.pokemonapp.home.api.RetrofitInstance
-import cnx.example.pokemonapp.home.api.PokemonList
-import cnx.example.pokemonapp.login.LoginActivity
+import cnx.example.pokemonapp.api.RetrofitInstance
+import cnx.example.pokemonapp.api.PokemonList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +16,7 @@ class ListPresenter(private val view: ListContract.View): ListContract.Presenter
         RetrofitInstance.getPokemonList().enqueue(
             object: Callback<PokemonList> {
                 override fun onResponse(call: Call<PokemonList>, response: Response<PokemonList>) {
-
+                    Log.d("Pokeapi", "Entro en el response")
                   if (response.isSuccessful && response.body() !== null) {
                       view.showList(response.body()!!.results)
                   } else{
